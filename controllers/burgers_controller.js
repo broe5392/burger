@@ -17,7 +17,7 @@ router.post('/burgers', function(req, res) {
     ], [
         req.body.burger_name
     ], function(result) {
-        res.json(result);
+        res.json({id: result.insertId});
     });
 });
 
@@ -25,9 +25,13 @@ router.put('/burgers/:id', function(req, res) {
     var condition = 'id = ' + req.params.id;
 
     burger.updateOne({
-        devoured: true
-    }, condition, function(data) {
-        res.json(result);
+        burger_name: req.body.burger_name
+    }, condition, function(result) {
+        if(results.changedRows == 0) {
+        return res.status(404).end();
+        }else{
+            res.status(200).end();
+        }
     });
 });
 

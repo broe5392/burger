@@ -3,18 +3,20 @@
 <div class="container">
     <div class="row">
         <div class="col s6">
+            <h2>Fresh Bergers!!</h2>
             {{#each burgers}}
-            {{#unless this.devoured}}
-                {{> burgers/burgers-block devoured=false}}
+            {{#unless devoured}}
+                {{> burgers/burgers-block devoured=true}}
             {{/unless}}
             {{/each}}
         </div>
 
         <div class="col s6">
+            <h2>Devoured Bergers!</h2>
             {{#each burgers}}
-            {{#if this.devoured}}
+            {{#if devoured}}
                     <div>
-                        {{> burgers/burgers-block devoured=true}}
+                        {{> burgers/burgers-block devoured=false}}
                     </div>
             {{/if}}
             {{/each}}

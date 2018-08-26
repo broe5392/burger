@@ -27,7 +27,7 @@ router.put('/burgers/:id', function(req, res) {
     burger.updateOne({
         burger_name: req.body.burger_name
     }, condition, function(result) {
-        if(results.changedRows == 0) {
+        if(result.changedRows == 0) {
         return res.status(404).end();
         }else{
             res.status(200).end();

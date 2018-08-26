@@ -18,16 +18,17 @@ $(function() {
             event.preventDefault();
 
             var newBerger = {
-                burger_name: $("#berger").val().trim(),
-                devoured: false
+                burger_name: $("#berger").val().trim()
             };
 
             $.ajax("/burgers", {
                 type: "POST",
                 data: newBerger
             }).then(function() {
+                console.log("new berger created!");
                 location.reload();
             });
         });
+        console.log("clicked");
     });
 });
